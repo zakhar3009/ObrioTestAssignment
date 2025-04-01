@@ -25,6 +25,8 @@
 		7E3956782D9C6612005C2807 /* TransactionModel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956772D9C6612005C2807 /* TransactionModel+Init.swift */; };
 		7E39567A2D9C6620005C2807 /* WalletModel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956792D9C6620005C2807 /* WalletModel+Init.swift */; };
 		7E39567C2D9C662F005C2807 /* CurrencyRate+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39567B2D9C662F005C2807 /* CurrencyRate+Init.swift */; };
+		7E3956802D9C6E26005C2807 /* DecoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39567F2D9C6E26005C2807 /* DecoderService.swift */; };
+		7E3956822D9C6FCA005C2807 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956812D9C6FCA005C2807 /* NetworkingService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		7E3956772D9C6612005C2807 /* TransactionModel+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionModel+Init.swift"; sourceTree = "<group>"; };
 		7E3956792D9C6620005C2807 /* WalletModel+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletModel+Init.swift"; sourceTree = "<group>"; };
 		7E39567B2D9C662F005C2807 /* CurrencyRate+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyRate+Init.swift"; sourceTree = "<group>"; };
+		7E39567F2D9C6E26005C2807 /* DecoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderService.swift; sourceTree = "<group>"; };
+		7E3956812D9C6FCA005C2807 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 				7E3956422D9C4F87005C2807 /* Main.storyboard */,
 				7E3956432D9C4F87005C2807 /* SceneDelegate.swift */,
 				7E3956442D9C4F87005C2807 /* ViewController.swift */,
+				7E39567D2D9C6D80005C2807 /* Networking */,
 				7E39564D2D9C51DD005C2807 /* DataLayer */,
 			);
 			path = ObrioTestAssignment;
@@ -141,6 +146,15 @@
 				7E3956752D9C5E8C005C2807 /* DataService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		7E39567D2D9C6D80005C2807 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7E3956812D9C6FCA005C2807 /* NetworkingService.swift */,
+				7E39567F2D9C6E26005C2807 /* DecoderService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,10 +237,12 @@
 				7E3956762D9C5E8C005C2807 /* DataService.swift in Sources */,
 				7E3956782D9C6612005C2807 /* TransactionModel+Init.swift in Sources */,
 				7E3956652D9C5A7B005C2807 /* CurrencyRate+CoreDataClass.swift in Sources */,
+				7E3956802D9C6E26005C2807 /* DecoderService.swift in Sources */,
 				7E39567C2D9C662F005C2807 /* CurrencyRate+Init.swift in Sources */,
 				7E3956672D9C5A7B005C2807 /* Transaction+CoreDataClass.swift in Sources */,
 				7E3956692D9C5A7B005C2807 /* Wallet+CoreDataClass.swift in Sources */,
 				7E3956522D9C5266005C2807 /* TransactionCategories.swift in Sources */,
+				7E3956822D9C6FCA005C2807 /* NetworkingService.swift in Sources */,
 				7E3956462D9C4F87005C2807 /* AppDelegate.swift in Sources */,
 				7E39567A2D9C6620005C2807 /* WalletModel+Init.swift in Sources */,
 				7E3956502D9C523E005C2807 /* DBDataModel.xcdatamodeld in Sources */,
