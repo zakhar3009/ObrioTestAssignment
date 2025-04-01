@@ -13,6 +13,7 @@ import CoreData
 public class Wallet: NSManagedObject {
     convenience init(context: NSManagedObjectContext, model: WalletModel) {
         self.init(context: context)
-        self.balance = NSDecimalNumber(decimal: model.balance) 
+        self.walletId = model.walletId
+        self.balance = NSDecimalNumber(decimal: model.balance)
     }
 }

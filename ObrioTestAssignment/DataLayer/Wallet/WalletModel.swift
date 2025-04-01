@@ -8,5 +8,6 @@
 import Foundation
 
 struct WalletModel {
+    let walletId: UUID
     let balance: Decimal
 }

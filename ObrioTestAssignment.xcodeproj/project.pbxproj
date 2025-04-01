@@ -21,6 +21,10 @@
 		7E39566D2D9C5C1A005C2807 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39566C2D9C5C1A005C2807 /* TransactionModel.swift */; };
 		7E3956702D9C5C82005C2807 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39566F2D9C5C82005C2807 /* WalletModel.swift */; };
 		7E3956732D9C5CA7005C2807 /* CurrencyRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956722D9C5CA7005C2807 /* CurrencyRateModel.swift */; };
+		7E3956762D9C5E8C005C2807 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956752D9C5E8C005C2807 /* DataService.swift */; };
+		7E3956782D9C6612005C2807 /* TransactionModel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956772D9C6612005C2807 /* TransactionModel+Init.swift */; };
+		7E39567A2D9C6620005C2807 /* WalletModel+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956792D9C6620005C2807 /* WalletModel+Init.swift */; };
+		7E39567C2D9C662F005C2807 /* CurrencyRate+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39567B2D9C662F005C2807 /* CurrencyRate+Init.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		7E39566C2D9C5C1A005C2807 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		7E39566F2D9C5C82005C2807 /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
 		7E3956722D9C5CA7005C2807 /* CurrencyRateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateModel.swift; sourceTree = "<group>"; };
+		7E3956752D9C5E8C005C2807 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		7E3956772D9C6612005C2807 /* TransactionModel+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionModel+Init.swift"; sourceTree = "<group>"; };
+		7E3956792D9C6620005C2807 /* WalletModel+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WalletModel+Init.swift"; sourceTree = "<group>"; };
+		7E39567B2D9C662F005C2807 /* CurrencyRate+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyRate+Init.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +95,7 @@
 		7E39564D2D9C51DD005C2807 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				7E3956742D9C5E83005C2807 /* Service */,
 				7E39566B2D9C5ABE005C2807 /* Transaction */,
 				7E39566E2D9C5C69005C2807 /* Wallet */,
 				7E3956712D9C5C91005C2807 /* CurrencyRate */,
@@ -100,6 +109,7 @@
 			children = (
 				7E3956612D9C5A7B005C2807 /* Transaction+CoreDataClass.swift */,
 				7E39566C2D9C5C1A005C2807 /* TransactionModel.swift */,
+				7E3956772D9C6612005C2807 /* TransactionModel+Init.swift */,
 				7E3956512D9C5266005C2807 /* TransactionCategories.swift */,
 			);
 			path = Transaction;
@@ -109,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				7E3956632D9C5A7B005C2807 /* Wallet+CoreDataClass.swift */,
+				7E3956792D9C6620005C2807 /* WalletModel+Init.swift */,
 				7E39566F2D9C5C82005C2807 /* WalletModel.swift */,
 			);
 			path = Wallet;
@@ -119,8 +130,17 @@
 			children = (
 				7E39565F2D9C5A7B005C2807 /* CurrencyRate+CoreDataClass.swift */,
 				7E3956722D9C5CA7005C2807 /* CurrencyRateModel.swift */,
+				7E39567B2D9C662F005C2807 /* CurrencyRate+Init.swift */,
 			);
 			path = CurrencyRate;
+			sourceTree = "<group>";
+		};
+		7E3956742D9C5E83005C2807 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7E3956752D9C5E8C005C2807 /* DataService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,11 +220,15 @@
 				7E3956732D9C5CA7005C2807 /* CurrencyRateModel.swift in Sources */,
 				7E3956702D9C5C82005C2807 /* WalletModel.swift in Sources */,
 				7E39566D2D9C5C1A005C2807 /* TransactionModel.swift in Sources */,
+				7E3956762D9C5E8C005C2807 /* DataService.swift in Sources */,
+				7E3956782D9C6612005C2807 /* TransactionModel+Init.swift in Sources */,
 				7E3956652D9C5A7B005C2807 /* CurrencyRate+CoreDataClass.swift in Sources */,
+				7E39567C2D9C662F005C2807 /* CurrencyRate+Init.swift in Sources */,
 				7E3956672D9C5A7B005C2807 /* Transaction+CoreDataClass.swift in Sources */,
 				7E3956692D9C5A7B005C2807 /* Wallet+CoreDataClass.swift in Sources */,
 				7E3956522D9C5266005C2807 /* TransactionCategories.swift in Sources */,
 				7E3956462D9C4F87005C2807 /* AppDelegate.swift in Sources */,
+				7E39567A2D9C6620005C2807 /* WalletModel+Init.swift in Sources */,
 				7E3956502D9C523E005C2807 /* DBDataModel.xcdatamodeld in Sources */,
 				7E3956472D9C4F87005C2807 /* SceneDelegate.swift in Sources */,
 				7E3956482D9C4F87005C2807 /* ViewController.swift in Sources */,
