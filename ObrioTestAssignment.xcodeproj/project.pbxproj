@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E13D5492D9D432300CC2AF6 /* WalletsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E13D5482D9D432300CC2AF6 /* WalletsDataService.swift */; };
+		7E13D54B2D9D45BF00CC2AF6 /* TransactionsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E13D54A2D9D45BF00CC2AF6 /* TransactionsDataService.swift */; };
+		7E13D54D2D9D486300CC2AF6 /* BitcoinRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E13D54C2D9D486300CC2AF6 /* BitcoinRateService.swift */; };
 		7E3956462D9C4F87005C2807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39563C2D9C4F87005C2807 /* AppDelegate.swift */; };
 		7E3956472D9C4F87005C2807 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956432D9C4F87005C2807 /* SceneDelegate.swift */; };
-		7E3956482D9C4F87005C2807 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956442D9C4F87005C2807 /* ViewController.swift */; };
+		7E3956482D9C4F87005C2807 /* TransactionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956442D9C4F87005C2807 /* TransactionsController.swift */; };
 		7E3956492D9C4F87005C2807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E39563D2D9C4F87005C2807 /* Assets.xcassets */; };
 		7E39564B2D9C4F87005C2807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3956402D9C4F87005C2807 /* LaunchScreen.storyboard */; };
-		7E39564C2D9C4F87005C2807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3956422D9C4F87005C2807 /* Main.storyboard */; };
 		7E3956502D9C523E005C2807 /* DBDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E39564E2D9C523E005C2807 /* DBDataModel.xcdatamodeld */; };
 		7E3956522D9C5266005C2807 /* TransactionCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956512D9C5266005C2807 /* TransactionCategories.swift */; };
 		7E3956652D9C5A7B005C2807 /* CurrencyRate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39565F2D9C5A7B005C2807 /* CurrencyRate+CoreDataClass.swift */; };
@@ -27,17 +29,21 @@
 		7E39567C2D9C662F005C2807 /* CurrencyRate+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39567B2D9C662F005C2807 /* CurrencyRate+Init.swift */; };
 		7E3956802D9C6E26005C2807 /* DecoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39567F2D9C6E26005C2807 /* DecoderService.swift */; };
 		7E3956822D9C6FCA005C2807 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956812D9C6FCA005C2807 /* NetworkingService.swift */; };
+		7E39568A2D9C79E7005C2807 /* TransactionsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956892D9C79E7005C2807 /* TransactionsVM.swift */; };
+		7E39568C2D9C7FC4005C2807 /* RateRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39568B2D9C7FC4005C2807 /* RateRequestModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E13D5482D9D432300CC2AF6 /* WalletsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsDataService.swift; sourceTree = "<group>"; };
+		7E13D54A2D9D45BF00CC2AF6 /* TransactionsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDataService.swift; sourceTree = "<group>"; };
+		7E13D54C2D9D486300CC2AF6 /* BitcoinRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinRateService.swift; sourceTree = "<group>"; };
 		7E3956242D9C4F63005C2807 /* ObrioTestAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObrioTestAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E39563C2D9C4F87005C2807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E39563D2D9C4F87005C2807 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E39563E2D9C4F87005C2807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E39563F2D9C4F87005C2807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7E3956412D9C4F87005C2807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E3956432D9C4F87005C2807 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7E3956442D9C4F87005C2807 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7E3956442D9C4F87005C2807 /* TransactionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsController.swift; sourceTree = "<group>"; };
 		7E39564F2D9C523E005C2807 /* DBDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DBDataModel.xcdatamodel; sourceTree = "<group>"; };
 		7E3956512D9C5266005C2807 /* TransactionCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCategories.swift; sourceTree = "<group>"; };
 		7E39565F2D9C5A7B005C2807 /* CurrencyRate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyRate+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -52,6 +58,8 @@
 		7E39567B2D9C662F005C2807 /* CurrencyRate+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyRate+Init.swift"; sourceTree = "<group>"; };
 		7E39567F2D9C6E26005C2807 /* DecoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderService.swift; sourceTree = "<group>"; };
 		7E3956812D9C6FCA005C2807 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		7E3956892D9C79E7005C2807 /* TransactionsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsVM.swift; sourceTree = "<group>"; };
+		7E39568B2D9C7FC4005C2807 /* RateRequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRequestModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,15 +92,13 @@
 		7E3956452D9C4F87005C2807 /* ObrioTestAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				7E39563C2D9C4F87005C2807 /* AppDelegate.swift */,
-				7E39563D2D9C4F87005C2807 /* Assets.xcassets */,
 				7E39563E2D9C4F87005C2807 /* Info.plist */,
 				7E3956402D9C4F87005C2807 /* LaunchScreen.storyboard */,
-				7E3956422D9C4F87005C2807 /* Main.storyboard */,
-				7E3956432D9C4F87005C2807 /* SceneDelegate.swift */,
-				7E3956442D9C4F87005C2807 /* ViewController.swift */,
+				7E3956842D9C75AE005C2807 /* ApplicationDelegates */,
+				7E3956852D9C79B1005C2807 /* Transactions */,
 				7E39567D2D9C6D80005C2807 /* Networking */,
 				7E39564D2D9C51DD005C2807 /* DataLayer */,
+				7E39563D2D9C4F87005C2807 /* Assets.xcassets */,
 			);
 			path = ObrioTestAssignment;
 			sourceTree = "<group>";
@@ -100,7 +106,7 @@
 		7E39564D2D9C51DD005C2807 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				7E3956742D9C5E83005C2807 /* Service */,
+				7E3956742D9C5E83005C2807 /* Services */,
 				7E39566B2D9C5ABE005C2807 /* Transaction */,
 				7E39566E2D9C5C69005C2807 /* Wallet */,
 				7E3956712D9C5C91005C2807 /* CurrencyRate */,
@@ -140,21 +146,51 @@
 			path = CurrencyRate;
 			sourceTree = "<group>";
 		};
-		7E3956742D9C5E83005C2807 /* Service */ = {
+		7E3956742D9C5E83005C2807 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				7E3956752D9C5E8C005C2807 /* DataService.swift */,
+				7E13D5482D9D432300CC2AF6 /* WalletsDataService.swift */,
+				7E13D54A2D9D45BF00CC2AF6 /* TransactionsDataService.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		7E39567D2D9C6D80005C2807 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				7E3956812D9C6FCA005C2807 /* NetworkingService.swift */,
+				7E13D54C2D9D486300CC2AF6 /* BitcoinRateService.swift */,
 				7E39567F2D9C6E26005C2807 /* DecoderService.swift */,
+				7E39568B2D9C7FC4005C2807 /* RateRequestModels.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		7E3956842D9C75AE005C2807 /* ApplicationDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				7E3956432D9C4F87005C2807 /* SceneDelegate.swift */,
+				7E39563C2D9C4F87005C2807 /* AppDelegate.swift */,
+			);
+			path = ApplicationDelegates;
+			sourceTree = "<group>";
+		};
+		7E3956852D9C79B1005C2807 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				7E3956882D9C79D1005C2807 /* View */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		7E3956882D9C79D1005C2807 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7E3956442D9C4F87005C2807 /* TransactionsController.swift */,
+				7E3956892D9C79E7005C2807 /* TransactionsVM.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +256,6 @@
 			files = (
 				7E3956492D9C4F87005C2807 /* Assets.xcassets in Resources */,
 				7E39564B2D9C4F87005C2807 /* LaunchScreen.storyboard in Resources */,
-				7E39564C2D9C4F87005C2807 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,21 +268,26 @@
 			files = (
 				7E3956732D9C5CA7005C2807 /* CurrencyRateModel.swift in Sources */,
 				7E3956702D9C5C82005C2807 /* WalletModel.swift in Sources */,
+				7E13D54D2D9D486300CC2AF6 /* BitcoinRateService.swift in Sources */,
 				7E39566D2D9C5C1A005C2807 /* TransactionModel.swift in Sources */,
+				7E39568A2D9C79E7005C2807 /* TransactionsVM.swift in Sources */,
 				7E3956762D9C5E8C005C2807 /* DataService.swift in Sources */,
 				7E3956782D9C6612005C2807 /* TransactionModel+Init.swift in Sources */,
+				7E13D5492D9D432300CC2AF6 /* WalletsDataService.swift in Sources */,
 				7E3956652D9C5A7B005C2807 /* CurrencyRate+CoreDataClass.swift in Sources */,
 				7E3956802D9C6E26005C2807 /* DecoderService.swift in Sources */,
+				7E13D54B2D9D45BF00CC2AF6 /* TransactionsDataService.swift in Sources */,
 				7E39567C2D9C662F005C2807 /* CurrencyRate+Init.swift in Sources */,
 				7E3956672D9C5A7B005C2807 /* Transaction+CoreDataClass.swift in Sources */,
 				7E3956692D9C5A7B005C2807 /* Wallet+CoreDataClass.swift in Sources */,
 				7E3956522D9C5266005C2807 /* TransactionCategories.swift in Sources */,
+				7E39568C2D9C7FC4005C2807 /* RateRequestModels.swift in Sources */,
 				7E3956822D9C6FCA005C2807 /* NetworkingService.swift in Sources */,
 				7E3956462D9C4F87005C2807 /* AppDelegate.swift in Sources */,
 				7E39567A2D9C6620005C2807 /* WalletModel+Init.swift in Sources */,
 				7E3956502D9C523E005C2807 /* DBDataModel.xcdatamodeld in Sources */,
 				7E3956472D9C4F87005C2807 /* SceneDelegate.swift in Sources */,
-				7E3956482D9C4F87005C2807 /* ViewController.swift in Sources */,
+				7E3956482D9C4F87005C2807 /* TransactionsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,14 +300,6 @@
 				7E39563F2D9C4F87005C2807 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		7E3956422D9C4F87005C2807 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7E3956412D9C4F87005C2807 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -285,7 +317,6 @@
 				INFOPLIST_FILE = ObrioTestAssignment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -314,7 +345,6 @@
 				INFOPLIST_FILE = ObrioTestAssignment/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
