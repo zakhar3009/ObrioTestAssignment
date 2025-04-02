@@ -38,9 +38,10 @@ class DataService {
         return try context.fetch(request)
     }
     
-    func fetchBatch<T: NSManagedObject>(offset: Int, limit: Int, predicate: NSPredicate? = nil) throws -> [T] {
+    func fetchBatch<T: NSManagedObject>(offset: Int, limit: Int, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor] = []) throws -> [T] {
         let request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
         request.predicate = predicate
+        request.sortDescriptors = sortDescriptors
         request.fetchOffset = offset
         request.fetchLimit = limit
         return try context.fetch(request)
