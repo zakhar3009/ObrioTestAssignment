@@ -15,5 +15,6 @@ public class Wallet: NSManagedObject {
         self.init(context: context)
         self.walletId = model.walletId
         self.balance = NSDecimalNumber(decimal: model.balance)
+        self.transactions = NSSet(array: model.transactions) 
     }
 }

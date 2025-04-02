@@ -31,6 +31,7 @@
 		7E3956822D9C6FCA005C2807 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956812D9C6FCA005C2807 /* NetworkingService.swift */; };
 		7E39568A2D9C79E7005C2807 /* TransactionsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3956892D9C79E7005C2807 /* TransactionsVM.swift */; };
 		7E39568C2D9C7FC4005C2807 /* RateRequestModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E39568B2D9C7FC4005C2807 /* RateRequestModels.swift */; };
+		7ED5FB092D9D70B5005CBB2F /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5FB082D9D70B5005CBB2F /* TransactionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		7E3956812D9C6FCA005C2807 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		7E3956892D9C79E7005C2807 /* TransactionsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsVM.swift; sourceTree = "<group>"; };
 		7E39568B2D9C7FC4005C2807 /* RateRequestModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRequestModels.swift; sourceTree = "<group>"; };
+		7ED5FB082D9D70B5005CBB2F /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				7E39566C2D9C5C1A005C2807 /* TransactionModel.swift */,
 				7E3956772D9C6612005C2807 /* TransactionModel+Init.swift */,
 				7E3956512D9C5266005C2807 /* TransactionCategories.swift */,
+				7ED5FB082D9D70B5005CBB2F /* TransactionType.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -179,18 +182,10 @@
 		7E3956852D9C79B1005C2807 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
-				7E3956882D9C79D1005C2807 /* View */,
-			);
-			path = Transactions;
-			sourceTree = "<group>";
-		};
-		7E3956882D9C79D1005C2807 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				7E3956442D9C4F87005C2807 /* TransactionsController.swift */,
 				7E3956892D9C79E7005C2807 /* TransactionsVM.swift */,
 			);
-			path = View;
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +265,7 @@
 				7E3956702D9C5C82005C2807 /* WalletModel.swift in Sources */,
 				7E13D54D2D9D486300CC2AF6 /* BitcoinRateService.swift in Sources */,
 				7E39566D2D9C5C1A005C2807 /* TransactionModel.swift in Sources */,
+				7ED5FB092D9D70B5005CBB2F /* TransactionType.swift in Sources */,
 				7E39568A2D9C79E7005C2807 /* TransactionsVM.swift in Sources */,
 				7E3956762D9C5E8C005C2807 /* DataService.swift in Sources */,
 				7E3956782D9C6612005C2807 /* TransactionModel+Init.swift in Sources */,

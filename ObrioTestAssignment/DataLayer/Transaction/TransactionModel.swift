@@ -10,5 +10,7 @@ import Foundation
 struct TransactionModel {
     let date: Date
     let amount: Decimal
-    let category: TransactionCategories
+    let category: TransactionCategories?
+    let wallet: WalletModel
+    let type: TransactionType
 }

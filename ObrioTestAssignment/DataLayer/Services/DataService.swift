@@ -32,19 +32,15 @@ class DataService {
         }
     }
     
-    func find<T: NSManagedObject>(by id: UUID, idField: String = "id") throws -> T? {
+    func fetchAll<T: NSManagedObject>(predicate: NSPredicate? = nil) throws -> [T] {
         let request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
-        request.predicate = NSPredicate(format: "\(idField) == %@", id.uuidString)
-        return try context.fetch(request).first
-    }
-    
-    func fetchAll<T: NSManagedObject>() throws -> [T] {
-        let request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
+        request.predicate = predicate
         return try context.fetch(request)
     }
     
-    func fetchBatch<T: NSManagedObject>(offset: Int, limit: Int) throws -> [T] {
+    func fetchBatch<T: NSManagedObject>(offset: Int, limit: Int, predicate: NSPredicate? = nil) throws -> [T] {
         let request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
+        request.predicate = predicate
         request.fetchOffset = offset
         request.fetchLimit = limit
         return try context.fetch(request)

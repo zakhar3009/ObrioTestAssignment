@@ -14,7 +14,9 @@ public class Transaction: NSManagedObject {
     convenience init(context: NSManagedObjectContext, model: TransactionModel) {
         self.init(context: context)
         self.date = model.date
-        self.category = model.category.rawValue
+        self.type = model.type.rawValue
+        self.category = model.category?.rawValue
         self.amount = NSDecimalNumber(decimal: model.amount)
+        self.wallet = Wallet(context: context, model: model.wallet)
     }
 }

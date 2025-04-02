@@ -11,13 +11,22 @@ extension TransactionModel {
     init?(from transaction: Transaction) {
         guard let date = transaction.date,
               let amount = transaction.amount,
-              let categoryName = transaction.category,
-              let category = TransactionCategories(rawValue: categoryName)
+              let wallet = transaction.wallet,
+              let walletModel = WalletModel(from: wallet),
+              let type = transaction.type,
+              let transactionType = TransactionType(rawValue: type)
         else {
             return nil
         }
         self.date = date
         self.amount = amount.decimalValue
-        self.category = category
+        self.wallet = walletModel
+        self.type = transactionType
+        if let categoryName = transaction.category,
+           let category = TransactionCategories(rawValue: categoryName) {
+            self.category = category
+        } else {
+            self.category = nil
+        }
     }
 }

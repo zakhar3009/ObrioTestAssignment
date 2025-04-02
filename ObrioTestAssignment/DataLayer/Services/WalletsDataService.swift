@@ -16,7 +16,8 @@ class WalletsDataService {
     
     func updateBalance(with value: Decimal, for wallet: WalletModel) {
         do {
-            if let wallet: Wallet = try dataService.find(by: wallet.walletId, idField: "walletId") {
+            let predicate = NSPredicate(format: "walletId == %@", wallet.walletId.uuidString)
+            if let wallet: Wallet = try dataService.fetchAll(predicate: predicate).first {
                 wallet.balance = NSDecimalNumber(decimal: (wallet.balance?.decimalValue ?? 0) + value)
                 dataService.saveChanges()
             } else {

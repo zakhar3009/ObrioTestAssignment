@@ -10,11 +10,13 @@ import Foundation
 extension WalletModel {
     init?(from wallet: Wallet) {
         guard let id = wallet.walletId,
-              let balance = wallet.balance
+              let balance = wallet.balance,
+              let transactions = wallet.transactions?.allObjects as? [Transaction]
         else {
             return nil
         }
         self.walletId = id
         self.balance = balance.decimalValue
+        self.transactions = transactions.compactMap { TransactionModel(from: $0) }
     }
 }

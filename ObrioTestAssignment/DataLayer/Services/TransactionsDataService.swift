@@ -14,9 +14,10 @@ class TransactionsDataService {
         self.dataService = dataService
     }
     
-    func fetchTransactionsBatch(offset: Int, limit: Int) -> [TransactionModel] {
+    func fetchTransactionsBatch(for wallet: WalletModel, offset: Int, limit: Int) -> [TransactionModel] {
         do {
-            let transactions: [Transaction] = try dataService.fetchBatch(offset: offset, limit: limit)
+            let predicate = NSPredicate(format: "wallet.walletId == %@", wallet.walletId.uuidString)
+            let transactions: [Transaction] = try dataService.fetchBatch(offset: offset, limit: limit, predicate: predicate)
             return transactions.compactMap { TransactionModel(from: $0) }
         } catch {
             print("Eror while fetching transactions: \(error.localizedDescription)")
