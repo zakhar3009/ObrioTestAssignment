@@ -11,6 +11,17 @@ enum NetworkingError: Error {
     case requestError
     case decodingError
     case invalidResponse
+    
+    var description: String {
+        switch self {
+        case .requestError:
+            "Network request error"
+        case .decodingError:
+            "Decoding error"
+        case .invalidResponse:
+            "Invalid response"
+        }
+    }
 }
 
 class NetworkingService {
