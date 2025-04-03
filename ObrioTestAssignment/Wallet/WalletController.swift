@@ -125,6 +125,27 @@ extension WalletController {
     }
 }
 
+extension WalletController {
+    private func makeDateSource() -> UICollectionViewDiffableDataSource<Section, Content> {
+        let balanceRegistration = createBalanceCellRegistration()
+        let transactionRegistration = createTransactionsCellRegistration()
+        let headerRegistration = createHeaderRegistration()
+        let dataSource: UICollectionViewDiffableDataSource<Section, Content> = UICollectionViewDiffableDataSource(
+            collectionView: collectionView,
+            cellProvider: { (collectionView, indexPath, item) in
+                switch item {
+                case .balance:
+                    return collectionView.dequeueConfiguredReusableCell(using: balanceRegistration, for: indexPath, item: ())
+                case .transaction(let transaction):
+                    return collectionView.dequeueConfiguredReusableCell(using: transactionRegistration, for: indexPath, item: transaction)
+                }
+            })
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+            collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+        }
+        return dataSource
+    }
+}
 extension WalletController: BalanceCellDelegate {
     func presentAlert(_ alert: UIAlertController) {
         self.present(alert, animated: true)
