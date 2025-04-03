@@ -25,7 +25,7 @@ class SectionHeaderView: UICollectionReusableView {
     }
     
     func setupUI() {
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
+        label.font = .systemFont(ofSize: 20, weight: .bold) 
         label.translatesAutoresizingMaskIntoConstraints = false
         label.adjustsFontForContentSizeCategory = true
         addSubview(label)

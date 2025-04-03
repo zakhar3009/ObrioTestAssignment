@@ -58,8 +58,8 @@ class CategorySelectionItemView: UIView {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             stackView.heightAnchor.constraint(equalToConstant: 30)

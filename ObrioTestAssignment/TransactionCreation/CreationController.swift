@@ -7,12 +7,12 @@
 import UIKit
 
 class TransactionCreationViewController: UIViewController {
-    private let vm = TransactionCreationVM(transactionService: TransactionsDataService(dataService: DataService()))
     weak var coordinator: WalletCoordinator?
     private var vm: TransactionCreationVM!
     private var selectionView: CategorySelectionView!
     private var amountTextField: UITextField!
     private var createButton: UIButton!
+    private var inputTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +27,20 @@ class TransactionCreationViewController: UIViewController {
     }
     
     private func setupUI() {
+        title = "Add transaction"
+        setupInputTitle()
         setupAmountInput()
         setupSelectionView()
         setupCreateButton()
+    }
+    
+    private func setupInputTitle() {
+        inputTitle = UILabel()
+        inputTitle.translatesAutoresizingMaskIntoConstraints = false
+        inputTitle.textAlignment = .left
+        inputTitle.text = "Amount"
+        inputTitle.font = .systemFont(ofSize: 18, weight: .bold)
+        view.addSubview(inputTitle)
     }
     
     private func setupAmountInput() {
@@ -70,7 +81,13 @@ class TransactionCreationViewController: UIViewController {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            amountTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            inputTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            inputTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            inputTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            inputTitle.heightAnchor.constraint(equalToConstant: 20),
+        ])
+        NSLayoutConstraint.activate([
+            amountTextField.topAnchor.constraint(equalTo: inputTitle.bottomAnchor, constant: 12),
             amountTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             amountTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             amountTextField.heightAnchor.constraint(equalToConstant: 40),

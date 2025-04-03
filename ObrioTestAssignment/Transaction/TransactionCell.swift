@@ -9,7 +9,6 @@ import UIKit
 
 final class TransactionCell: UICollectionViewCell {
     static let reuseIdentifier = "TransactionCell"
-    
     private let dateLabel = UILabel()
     private let categoryLabel = UILabel()
     private let amountLabel = UILabel()
@@ -27,7 +26,7 @@ final class TransactionCell: UICollectionViewCell {
         dateLabel.text = vm.formattedDate
         categoryLabel.text = vm.category
         amountLabel.text = vm.amount
-        amountLabel.textColor = color(for: vm.transaction.amount)
+        amountLabel.textColor = color(for: vm.transaction)
     }
     
     private func setupUI() {
@@ -77,11 +76,11 @@ final class TransactionCell: UICollectionViewCell {
         ])
     }
     
-    private func color(for amount: Decimal) -> UIColor {
-        switch amount.sign {
-        case .plus:
+    private func color(for transaction: TransactionModel) -> UIColor {
+        switch transaction.type {
+        case .deposit:
             UIColor.systemGreen
-        case .minus:
+        case .expense:
             UIColor.systemRed
         }
     }
