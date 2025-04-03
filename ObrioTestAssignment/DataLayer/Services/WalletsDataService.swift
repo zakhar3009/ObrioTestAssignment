@@ -28,7 +28,17 @@ class WalletsDataService {
         }
     }
     
-    func getMainWallet() -> WalletModel? {
+    func getWallets() -> [WalletModel] {
+        do {
+            let wallets: [Wallet] = try dataService.fetchAll()
+            return wallets.compactMap { WalletModel(from: $0) }
+        } catch {
+            print("Error fetching wallets: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    func getWallet(by id: UUID) -> WalletModel? {
         do {
             if let wallet: Wallet = try dataService.fetchAll().first {
                 return WalletModel(from: wallet)
@@ -39,10 +49,11 @@ class WalletsDataService {
         return nil
     }
     
-    func createMainWallet() {
+    func createMainWallet() -> WalletModel? {
         let newWallet = Wallet(context: dataService.context)
         newWallet.walletId = UUID()
         newWallet.balance = 0
         dataService.saveChanges()
+        return WalletModel(from: newWallet)
     }
 }
