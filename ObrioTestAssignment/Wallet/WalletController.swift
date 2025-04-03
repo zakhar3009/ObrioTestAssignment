@@ -1,3 +1,10 @@
+//
+//  ViewController.swift
+//  ObrioTestAssignment
+//
+//  Created by Zakhar Litvinchuk on 01.04.2025.
+//
+
 import UIKit
 
 class WalletController: UIViewController {
@@ -115,5 +122,11 @@ extension WalletController {
                 supplementaryView.configure(text: date.format(to: "dd MMM"))
             }
         }
+    }
+}
+
+extension WalletController: BalanceCellDelegate {
+    func presentAlert(_ alert: UIAlertController) {
+        self.present(alert, animated: true)
     }
 }
