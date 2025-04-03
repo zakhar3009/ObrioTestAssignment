@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TransactionCategories: String, Hashable {
+enum TransactionCategories: String, Hashable, CaseIterable {
     case groceries = "Groceries"
     case taxi = "Taxi"
     case electronics = "Electronics"

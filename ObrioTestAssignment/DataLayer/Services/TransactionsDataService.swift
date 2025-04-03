@@ -51,7 +51,7 @@ class TransactionsDataService {
         }
     }
     
-    func notifyObservers(about transaction: TransactionModel) {
+    private func notifyObservers(about transaction: TransactionModel) {
         observers.forEach { $0.addedTransaction(transaction) }
     }
     

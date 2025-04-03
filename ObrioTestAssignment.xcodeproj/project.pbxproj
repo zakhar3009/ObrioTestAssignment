@@ -38,6 +38,13 @@
 		7EC639602D9EB20200B2F172 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6395C2D9EB20200B2F172 /* SectionHeaderView.swift */; };
 		7EC639612D9EB20200B2F172 /* WalletVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6395E2D9EB20200B2F172 /* WalletVM.swift */; };
 		7EC639622D9EB20200B2F172 /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6395D2D9EB20200B2F172 /* WalletController.swift */; };
+		7EC639652D9EE98D00B2F172 /* CreationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639642D9EE98D00B2F172 /* CreationController.swift */; };
+		7EC639672D9EF2D000B2F172 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639662D9EF2D000B2F172 /* CheckboxButton.swift */; };
+		7EC639692D9EF33300B2F172 /* CategorySelectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639682D9EF33300B2F172 /* CategorySelectionItemView.swift */; };
+		7EC6396B2D9EF38000B2F172 /* CategorySelectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6396A2D9EF38000B2F172 /* CategorySelectionVM.swift */; };
+		7EC6396D2D9EF6E700B2F172 /* CategorySelectionItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6396C2D9EF6E700B2F172 /* CategorySelectionItemVM.swift */; };
+		7EC639712D9EFEB800B2F172 /* CategorySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639702D9EFEB800B2F172 /* CategorySelectionView.swift */; };
+		7EC639732D9F02A600B2F172 /* TransactionCreationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639722D9F02A600B2F172 /* TransactionCreationVM.swift */; };
 		7ED5FB092D9D70B5005CBB2F /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5FB082D9D70B5005CBB2F /* TransactionType.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +82,13 @@
 		7EC6395C2D9EB20200B2F172 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		7EC6395D2D9EB20200B2F172 /* WalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
 		7EC6395E2D9EB20200B2F172 /* WalletVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVM.swift; sourceTree = "<group>"; };
+		7EC639642D9EE98D00B2F172 /* CreationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationController.swift; sourceTree = "<group>"; };
+		7EC639662D9EF2D000B2F172 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		7EC639682D9EF33300B2F172 /* CategorySelectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionItemView.swift; sourceTree = "<group>"; };
+		7EC6396A2D9EF38000B2F172 /* CategorySelectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionVM.swift; sourceTree = "<group>"; };
+		7EC6396C2D9EF6E700B2F172 /* CategorySelectionItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionItemVM.swift; sourceTree = "<group>"; };
+		7EC639702D9EFEB800B2F172 /* CategorySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionView.swift; sourceTree = "<group>"; };
+		7EC639722D9F02A600B2F172 /* TransactionCreationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCreationVM.swift; sourceTree = "<group>"; };
 		7ED5FB082D9D70B5005CBB2F /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +128,7 @@
 				7EC6395F2D9EB20200B2F172 /* Wallet */,
 				7EC6394F2D9EB10000B2F172 /* Transaction */,
 				7EC639452D9EB0A300B2F172 /* Balance */,
+				7EC639632D9EE96800B2F172 /* TransactionCreation */,
 				7E39567D2D9C6D80005C2807 /* Networking */,
 				7E39564D2D9C51DD005C2807 /* DataLayer */,
 				7EC639592D9EB1CF00B2F172 /* Extensions */,
@@ -233,6 +248,36 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
+		7EC639632D9EE96800B2F172 /* TransactionCreation */ = {
+			isa = PBXGroup;
+			children = (
+				7EC639642D9EE98D00B2F172 /* CreationController.swift */,
+				7EC639722D9F02A600B2F172 /* TransactionCreationVM.swift */,
+				7EC6396F2D9EFE5F00B2F172 /* SelectionList */,
+				7EC6396E2D9EFE3A00B2F172 /* SelectionItem */,
+				7EC639662D9EF2D000B2F172 /* CheckboxButton.swift */,
+			);
+			path = TransactionCreation;
+			sourceTree = "<group>";
+		};
+		7EC6396E2D9EFE3A00B2F172 /* SelectionItem */ = {
+			isa = PBXGroup;
+			children = (
+				7EC6396C2D9EF6E700B2F172 /* CategorySelectionItemVM.swift */,
+				7EC639682D9EF33300B2F172 /* CategorySelectionItemView.swift */,
+			);
+			path = SelectionItem;
+			sourceTree = "<group>";
+		};
+		7EC6396F2D9EFE5F00B2F172 /* SelectionList */ = {
+			isa = PBXGroup;
+			children = (
+				7EC6396A2D9EF38000B2F172 /* CategorySelectionVM.swift */,
+				7EC639702D9EFEB800B2F172 /* CategorySelectionView.swift */,
+			);
+			path = SelectionList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -306,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EC639652D9EE98D00B2F172 /* CreationController.swift in Sources */,
 				7E3956732D9C5CA7005C2807 /* CurrencyRateModel.swift in Sources */,
 				7E3956702D9C5C82005C2807 /* WalletModel.swift in Sources */,
 				7E13D54D2D9D486300CC2AF6 /* BitcoinRateService.swift in Sources */,
@@ -320,20 +366,26 @@
 				7E3956782D9C6612005C2807 /* TransactionModel+Init.swift in Sources */,
 				7E13D5492D9D432300CC2AF6 /* WalletsDataService.swift in Sources */,
 				7E3956652D9C5A7B005C2807 /* CurrencyRate+CoreDataClass.swift in Sources */,
+				7EC639732D9F02A600B2F172 /* TransactionCreationVM.swift in Sources */,
 				7E3956802D9C6E26005C2807 /* DecoderService.swift in Sources */,
 				7E13D54B2D9D45BF00CC2AF6 /* TransactionsDataService.swift in Sources */,
 				7EC639502D9EB10000B2F172 /* TransactionCellVM.swift in Sources */,
+				7EC639672D9EF2D000B2F172 /* CheckboxButton.swift in Sources */,
 				7EC639512D9EB10000B2F172 /* TransactionCell.swift in Sources */,
 				7E39567C2D9C662F005C2807 /* CurrencyRate+Init.swift in Sources */,
 				7E3956672D9C5A7B005C2807 /* Transaction+CoreDataClass.swift in Sources */,
 				7E3956692D9C5A7B005C2807 /* Wallet+CoreDataClass.swift in Sources */,
 				7E3956522D9C5266005C2807 /* TransactionCategories.swift in Sources */,
+				7EC639712D9EFEB800B2F172 /* CategorySelectionView.swift in Sources */,
 				7E39568C2D9C7FC4005C2807 /* RateRequestModels.swift in Sources */,
+				7EC639692D9EF33300B2F172 /* CategorySelectionItemView.swift in Sources */,
 				7E3956822D9C6FCA005C2807 /* NetworkingService.swift in Sources */,
 				7E3956462D9C4F87005C2807 /* AppDelegate.swift in Sources */,
 				7EC6395A2D9EB1CF00B2F172 /* Date+Format.swift in Sources */,
+				7EC6396B2D9EF38000B2F172 /* CategorySelectionVM.swift in Sources */,
 				7EC6395B2D9EB1CF00B2F172 /* NumberFormatter+CurrencyFormatting.swift in Sources */,
 				7E39567A2D9C6620005C2807 /* WalletModel+Init.swift in Sources */,
+				7EC6396D2D9EF6E700B2F172 /* CategorySelectionItemVM.swift in Sources */,
 				7E3956502D9C523E005C2807 /* DBDataModel.xcdatamodeld in Sources */,
 				7E3956472D9C4F87005C2807 /* SceneDelegate.swift in Sources */,
 			);
