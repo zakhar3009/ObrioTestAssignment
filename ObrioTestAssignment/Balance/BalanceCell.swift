@@ -130,16 +130,23 @@ class BalanceCell: UICollectionViewCell {
             textField.keyboardType = .numberPad
         }
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak alert, weak self] _ in
-            if let amountString = alert?.textFields?.first?.text, let amount = Decimal(string: amountString) {
+            if let input = alert?.textFields?.first?.text,
+               let amount = self?.vm?.validatedDeposit(from: input) {
                 self?.vm?.addDeposit(amount)
-                print("User entered: \(amount)")
             } else {
-                print("Invalid input")
+                self?.showInvalidInputAlert()
             }
         }
         alert.addAction(submitAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(cancelAction)
+        self.delegate?.presentAlert(alert)
+    }
+    
+    private func showInvalidInputAlert() {
+        let alert = UIAlertController(title: "Invalid input", message: "Please enter a valid amount", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
         self.delegate?.presentAlert(alert)
     }
 }

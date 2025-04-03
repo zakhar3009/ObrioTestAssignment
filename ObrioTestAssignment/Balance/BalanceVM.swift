@@ -101,6 +101,13 @@ class BalanceVM {
         }
     }
     
+    func validatedDeposit(from value: String) -> Decimal? {
+        guard let amount = Decimal(string: value), amount > 0 else {
+            return nil
+        }
+        return amount
+    }
+    
     deinit {
         transactionsService.removeObserver(self)
     }
