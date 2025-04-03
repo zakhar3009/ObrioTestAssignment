@@ -86,3 +86,34 @@ class WalletController: UIViewController {
         return section
     }
 }
+
+extension WalletController {
+    private func createBalanceCellRegistration() -> UICollectionView.CellRegistration<BalanceCell, Void> {
+        UICollectionView.CellRegistration<BalanceCell, Void> { [weak self] (cell, indexPath, _) in
+            guard let self else { return }
+            let vm = BalanceVM(wallet: self.vm.mainWallet,
+                               walletsService: self.vm.walletService,
+                               rateService: self.vm.rateService,
+                               transactionsService: self.vm.transactionsService)
+            cell.configure(vm: vm, delegate: self)
+        }
+    }
+    
+    private func createTransactionsCellRegistration() -> UICollectionView.CellRegistration<TransactionCell, TransactionModel> {
+        UICollectionView.CellRegistration<TransactionCell, TransactionModel> { (cell, _, transaction) in
+            cell.configure(vm: TransactionCellVM(transaction: transaction))
+        }
+    }
+    
+    private func createHeaderRegistration() -> UICollectionView.SupplementaryRegistration<SectionHeaderView> {
+        UICollectionView.SupplementaryRegistration<SectionHeaderView>(
+            elementKind: WalletController.sectionHeaderKind
+        ) { [weak self] supplementaryView, _, indexPath in
+            guard let self else { return }
+            let section = self.dataSource.sectionIdentifier(for: indexPath.section)!
+            if case .transactionsGroup(let date) = section {
+                supplementaryView.configure(text: date.format(to: "dd MMM"))
+            }
+        }
+    }
+}
