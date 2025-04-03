@@ -9,9 +9,9 @@ import Foundation
 import CoreData
 
 class DataService {
-    var context: NSManagedObjectContext {
+    lazy var context: NSManagedObjectContext = {
         persistentContainer.viewContext
-    }
+    }()
     
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "DBDataModel")
