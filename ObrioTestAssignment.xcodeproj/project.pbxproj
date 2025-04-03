@@ -37,7 +37,7 @@
 		7EC6395B2D9EB1CF00B2F172 /* NumberFormatter+CurrencyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639582D9EB1CF00B2F172 /* NumberFormatter+CurrencyFormatting.swift */; };
 		7EC639602D9EB20200B2F172 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6395C2D9EB20200B2F172 /* SectionHeaderView.swift */; };
 		7EC639612D9EB20200B2F172 /* WalletVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6395E2D9EB20200B2F172 /* WalletVM.swift */; };
-		7EC639622D9EB20200B2F172 /* WalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6395D2D9EB20200B2F172 /* WalletController.swift */; };
+		7EC639622D9EB20200B2F172 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6395D2D9EB20200B2F172 /* WalletViewController.swift */; };
 		7EC639652D9EE98D00B2F172 /* CreationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639642D9EE98D00B2F172 /* CreationController.swift */; };
 		7EC639672D9EF2D000B2F172 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639662D9EF2D000B2F172 /* CheckboxButton.swift */; };
 		7EC639692D9EF33300B2F172 /* CategorySelectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639682D9EF33300B2F172 /* CategorySelectionItemView.swift */; };
@@ -45,6 +45,8 @@
 		7EC6396D2D9EF6E700B2F172 /* CategorySelectionItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6396C2D9EF6E700B2F172 /* CategorySelectionItemVM.swift */; };
 		7EC639712D9EFEB800B2F172 /* CategorySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639702D9EFEB800B2F172 /* CategorySelectionView.swift */; };
 		7EC639732D9F02A600B2F172 /* TransactionCreationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639722D9F02A600B2F172 /* TransactionCreationVM.swift */; };
+		7EC639762D9F129F00B2F172 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639752D9F129F00B2F172 /* Coordinator.swift */; };
+		7EC639782D9F142300B2F172 /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639772D9F142300B2F172 /* WalletCoordinator.swift */; };
 		7ED5FB092D9D70B5005CBB2F /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5FB082D9D70B5005CBB2F /* TransactionType.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +82,7 @@
 		7EC639572D9EB1CF00B2F172 /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 		7EC639582D9EB1CF00B2F172 /* NumberFormatter+CurrencyFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+CurrencyFormatting.swift"; sourceTree = "<group>"; };
 		7EC6395C2D9EB20200B2F172 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
-		7EC6395D2D9EB20200B2F172 /* WalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletController.swift; sourceTree = "<group>"; };
+		7EC6395D2D9EB20200B2F172 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		7EC6395E2D9EB20200B2F172 /* WalletVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVM.swift; sourceTree = "<group>"; };
 		7EC639642D9EE98D00B2F172 /* CreationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationController.swift; sourceTree = "<group>"; };
 		7EC639662D9EF2D000B2F172 /* CheckboxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 		7EC6396C2D9EF6E700B2F172 /* CategorySelectionItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionItemVM.swift; sourceTree = "<group>"; };
 		7EC639702D9EFEB800B2F172 /* CategorySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionView.swift; sourceTree = "<group>"; };
 		7EC639722D9F02A600B2F172 /* TransactionCreationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCreationVM.swift; sourceTree = "<group>"; };
+		7EC639752D9F129F00B2F172 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		7EC639772D9F142300B2F172 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		7ED5FB082D9D70B5005CBB2F /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,11 +130,12 @@
 				7E3956402D9C4F87005C2807 /* LaunchScreen.storyboard */,
 				7E3956842D9C75AE005C2807 /* ApplicationDelegates */,
 				7EC6395F2D9EB20200B2F172 /* Wallet */,
-				7EC6394F2D9EB10000B2F172 /* Transaction */,
 				7EC639452D9EB0A300B2F172 /* Balance */,
+				7EC6394F2D9EB10000B2F172 /* Transaction */,
 				7EC639632D9EE96800B2F172 /* TransactionCreation */,
 				7E39567D2D9C6D80005C2807 /* Networking */,
 				7E39564D2D9C51DD005C2807 /* DataLayer */,
+				7EC639742D9F121B00B2F172 /* Coordinator */,
 				7EC639592D9EB1CF00B2F172 /* Extensions */,
 				7E39563D2D9C4F87005C2807 /* Assets.xcassets */,
 			);
@@ -242,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				7EC6395C2D9EB20200B2F172 /* SectionHeaderView.swift */,
-				7EC6395D2D9EB20200B2F172 /* WalletController.swift */,
+				7EC6395D2D9EB20200B2F172 /* WalletViewController.swift */,
 				7EC6395E2D9EB20200B2F172 /* WalletVM.swift */,
 			);
 			path = Wallet;
@@ -253,9 +258,9 @@
 			children = (
 				7EC639642D9EE98D00B2F172 /* CreationController.swift */,
 				7EC639722D9F02A600B2F172 /* TransactionCreationVM.swift */,
+				7EC639662D9EF2D000B2F172 /* CheckboxButton.swift */,
 				7EC6396F2D9EFE5F00B2F172 /* SelectionList */,
 				7EC6396E2D9EFE3A00B2F172 /* SelectionItem */,
-				7EC639662D9EF2D000B2F172 /* CheckboxButton.swift */,
 			);
 			path = TransactionCreation;
 			sourceTree = "<group>";
@@ -276,6 +281,15 @@
 				7EC639702D9EFEB800B2F172 /* CategorySelectionView.swift */,
 			);
 			path = SelectionList;
+			sourceTree = "<group>";
+		};
+		7EC639742D9F121B00B2F172 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7EC639752D9F129F00B2F172 /* Coordinator.swift */,
+				7EC639772D9F142300B2F172 /* WalletCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,11 +371,12 @@
 				7E13D54D2D9D486300CC2AF6 /* BitcoinRateService.swift in Sources */,
 				7E39566D2D9C5C1A005C2807 /* TransactionModel.swift in Sources */,
 				7ED5FB092D9D70B5005CBB2F /* TransactionType.swift in Sources */,
+				7EC639762D9F129F00B2F172 /* Coordinator.swift in Sources */,
 				7EC639462D9EB0A300B2F172 /* BalanceCell.swift in Sources */,
 				7EC639472D9EB0A300B2F172 /* BalanceVM.swift in Sources */,
 				7EC639602D9EB20200B2F172 /* SectionHeaderView.swift in Sources */,
 				7EC639612D9EB20200B2F172 /* WalletVM.swift in Sources */,
-				7EC639622D9EB20200B2F172 /* WalletController.swift in Sources */,
+				7EC639622D9EB20200B2F172 /* WalletViewController.swift in Sources */,
 				7E3956762D9C5E8C005C2807 /* DataService.swift in Sources */,
 				7E3956782D9C6612005C2807 /* TransactionModel+Init.swift in Sources */,
 				7E13D5492D9D432300CC2AF6 /* WalletsDataService.swift in Sources */,
@@ -379,6 +394,7 @@
 				7EC639712D9EFEB800B2F172 /* CategorySelectionView.swift in Sources */,
 				7E39568C2D9C7FC4005C2807 /* RateRequestModels.swift in Sources */,
 				7EC639692D9EF33300B2F172 /* CategorySelectionItemView.swift in Sources */,
+				7EC639782D9F142300B2F172 /* WalletCoordinator.swift in Sources */,
 				7E3956822D9C6FCA005C2807 /* NetworkingService.swift in Sources */,
 				7E3956462D9C4F87005C2807 /* AppDelegate.swift in Sources */,
 				7EC6395A2D9EB1CF00B2F172 /* Date+Format.swift in Sources */,

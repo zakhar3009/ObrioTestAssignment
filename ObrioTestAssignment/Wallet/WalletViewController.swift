@@ -7,7 +7,8 @@
 
 import UIKit
 
-class WalletController: UIViewController {
+class WalletViewController: UIViewController {
+    weak var coordinator: WalletCoordinator?
     private var vm: WalletVM!
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Section, Content>!
@@ -26,12 +27,11 @@ class WalletController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+    }
+    
+    func configure(with vm: WalletVM) {
+        self.vm = vm
         setupCollectionView()
-        let dataService = DataService()
-        self.vm = WalletVM(walletService: WalletsDataService(dataService: dataService),
-                           rateService: BitcoinRateService(networkService: NetworkingService(decoderService: DecoderService()),
-                                                           dataService: dataService),
-                             transactionsService: TransactionsDataService(dataService: dataService))
         vm.delegate = self
     }
     
@@ -45,16 +45,10 @@ class WalletController: UIViewController {
                                 withReuseIdentifier: SectionHeaderView.reuseIdentifier)
         self.view.addSubview(collectionView)
         self.dataSource = makeDateSource()
-        updateBalanceCell()
     }
-    
-    func updateBalanceCell() {
-        var snapshot = dataSource.snapshot()
-        snapshot.appendSections([.wallet])
-        snapshot.appendItems([.balance], toSection: .wallet)
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
+}
+
+extension WalletViewController {
     func createCompositionLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
             let section = self.dataSource.sectionIdentifier(for: sectionIndex)!
@@ -94,7 +88,7 @@ class WalletController: UIViewController {
     }
 }
 
-extension WalletController {
+extension WalletViewController {
     private func createBalanceCellRegistration() -> UICollectionView.CellRegistration<BalanceCell, Void> {
         UICollectionView.CellRegistration<BalanceCell, Void> { [weak self] (cell, indexPath, _) in
             guard let self else { return }
@@ -108,13 +102,13 @@ extension WalletController {
     
     private func createTransactionsCellRegistration() -> UICollectionView.CellRegistration<TransactionCell, TransactionModel> {
         UICollectionView.CellRegistration<TransactionCell, TransactionModel> { (cell, _, transaction) in
-            cell.configure(vm: TransactionCellVM(transaction: transaction))
+            cellWalletViewControllerransactionCellVM(transaction: transaction))
         }
     }
     
     private func createHeaderRegistration() -> UICollectionView.SupplementaryRegistration<SectionHeaderView> {
         UICollectionView.SupplementaryRegistration<SectionHeaderView>(
-            elementKind: WalletController.sectionHeaderKind
+            elementKind: Self.sectionHeaderKind
         ) { [weak self] supplementaryView, _, indexPath in
             guard let self else { return }
             let section = self.dataSource.sectionIdentifier(for: indexPath.section)!
@@ -125,7 +119,7 @@ extension WalletController {
     }
 }
 
-extension WalletController {
+extension WalletViewController {
     private func makeDateSource() -> UICollectionViewDiffableDataSource<Section, Content> {
         let balanceRegistration = createBalanceCellRegistration()
         let transactionRegistration = createTransactionsCellRegistration()
@@ -147,7 +141,7 @@ extension WalletController {
     }
 }
 
-extension WalletController: TransactionsViewDelegate {
+extension WalletViewController: TransactionsViewDelegate {
     func updateTransactions() {
         var snaphot = NSDiffableDataSourceSnapshot<Section, Content>()
         snaphot.appendSections([.wallet])
@@ -164,8 +158,12 @@ extension WalletController: TransactionsViewDelegate {
     }
 }
 
-extension WalletController: BalanceCellDelegate {
+extension WalletViewController: BalanceCellDelegate {
     func presentAlert(_ alert: UIAlertController) {
         self.present(alert, animated: true)
+    }
+    
+    func goToCreation() {
+        coordinator?.goToTransactionCreation(for: vm.mainWallet)
     }
 }

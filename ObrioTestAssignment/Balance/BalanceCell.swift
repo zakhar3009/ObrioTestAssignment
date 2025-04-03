@@ -9,6 +9,7 @@ import UIKit
 
 protocol BalanceCellDelegate: AnyObject {
     func presentAlert(_ alert: UIAlertController)
+    func goToCreation()
 }
 
 class BalanceCell: UICollectionViewCell {
@@ -87,6 +88,7 @@ class BalanceCell: UICollectionViewCell {
         addTransactionButton.translatesAutoresizingMaskIntoConstraints = false
         addTransactionButton.backgroundColor = .systemBlue
         addTransactionButton.layer.cornerRadius = 12
+        addTransactionButton.addTarget(self, action: #selector(addTransactionTapped), for: .touchUpInside)
         self.contentView.addSubview(addTransactionButton)
     }
     
@@ -120,6 +122,11 @@ class BalanceCell: UICollectionViewCell {
             addTransactionButton.topAnchor.constraint(equalTo: self.balanceValue.bottomAnchor, constant: 12),
             addTransactionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    @objc
+    private func addTransactionTapped() {
+        delegate?.goToCreation()
     }
     
     @objc

@@ -8,6 +8,8 @@ import UIKit
 
 class TransactionCreationViewController: UIViewController {
     private let vm = TransactionCreationVM(transactionService: TransactionsDataService(dataService: DataService()))
+    weak var coordinator: WalletCoordinator?
+    private var vm: TransactionCreationVM!
     private var selectionView: CategorySelectionView!
     private var amountTextField: UITextField!
     private var createButton: UIButton!
@@ -17,6 +19,10 @@ class TransactionCreationViewController: UIViewController {
         view.backgroundColor = .systemBackground
         setupUI()
         setupLayout()
+    }
+    
+    func configure(with vm: TransactionCreationVM) {
+        self.vm = vm
         vm.delegate = self
     }
     
@@ -45,6 +51,7 @@ class TransactionCreationViewController: UIViewController {
     
     private func setupCreateButton() {
         createButton = UIButton(type: .system)
+        createButton.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
         createButton.translatesAutoresizingMaskIntoConstraints = false
         createButton.setTitle("Create", for: .normal)
         createButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
@@ -53,6 +60,12 @@ class TransactionCreationViewController: UIViewController {
         createButton.layer.cornerRadius = 10
         createButton.isEnabled = false
         view.addSubview(createButton)
+    }
+    
+    @objc
+    private func createButtonTapped() {
+        vm.createTransaction()
+        coordinator?.back()
     }
     
     private func setupLayout() {
