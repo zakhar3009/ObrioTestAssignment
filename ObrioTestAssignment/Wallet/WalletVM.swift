@@ -30,11 +30,13 @@ class WalletVM {
         self.walletService = walletService
         self.rateService = rateService
         self.transactionsService = transactionsService
+        transactionsService.addObserver(self)
         setupWallet()
         fetchNewTransactions()
     }
     
     private func setup() {
+        transactionsService.addObserver(self)
         setupWallet()
         fetchNewTransactions()
     }
@@ -85,4 +87,14 @@ class WalletVM {
         return transactions
     }
     
+    deinit {
+        transactionsService.removeObserver(self)
+    }
+}
+
+extension WalletVM: TransactionsOberver {
+    func addedTransaction(_ transaction: TransactionModel) {
+        guard mainWallet.walletId == transaction.walletId else { return }
+        mergeNewTransactions([transaction])
+    }
 }
