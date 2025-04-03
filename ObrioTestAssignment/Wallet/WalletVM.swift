@@ -25,23 +25,24 @@ class WalletVM {
             delegate?.updateTransactions()
         }
     }
+    var allTransactionsCount: Int {
+        transactions.flatMap { $0.transactions }.count
+    }
     
     init(walletService: WalletsDataService, rateService: BitcoinRateService, transactionsService: TransactionsDataService) {
         self.walletService = walletService
         self.rateService = rateService
         self.transactionsService = transactionsService
-        transactionsService.addObserver(self)
-        setupWallet()
-        fetchNewTransactions()
+        setup()
     }
     
     private func setup() {
         transactionsService.addObserver(self)
-        setupWallet()
+        updateWallet()
         fetchNewTransactions()
     }
     
-    private func setupWallet() {
+    private func updateWallet() {
         if let wallet = walletService.getWallets().first {
             self.mainWallet = wallet
         } else if let newWallet = walletService.createMainWallet() {
@@ -50,10 +51,9 @@ class WalletVM {
     }
     
     func fetchNewTransactions() {
-        let transactionsCount = transactions.flatMap { $0.transactions }.count
         let newTransactions = transactionsService.fetchTransactionsBatch(
             for: mainWallet,
-            offset: transactionsCount,
+            offset: allTransactionsCount,
             limit: transactionsBatchSize
         )
         if !newTransactions.isEmpty {
@@ -63,15 +63,15 @@ class WalletVM {
     
     private func mergeNewTransactions(_ newTransactions: [TransactionModel]) {
         let groupedTransactions = groupTransactions(newTransactions)
-        let previousGroupCount = transactions.count
         var mergedTransactions = Dictionary(uniqueKeysWithValues: transactions)
-        mergedTransactions.merge(groupedTransactions) { current, new in current + new }
-        transactions = mergedTransactions.sorted(by: { $0.key < $1.key }).map { ($0.key, $0.value) }
-        let updateLayout = transactions.count > previousGroupCount
-        notifyDelegate(updateLayout: updateLayout)
+        mergedTransactions.merge(groupedTransactions) { current, new in
+            (current + new).sorted(by: { $0.date > $1.date})
+        }
+        self.transactions = mergedTransactions.sorted(by: { $0.key > $1.key }).map { ($0.key, $0.value) }
+        notifyDelegate()
     }
     
-    private func notifyDelegate(updateLayout: Bool) {
+    private func notifyDelegate() {
         delegate?.updateTransactions()
     }
     
@@ -96,5 +96,6 @@ extension WalletVM: TransactionsOberver {
     func addedTransaction(_ transaction: TransactionModel) {
         guard mainWallet.walletId == transaction.walletId else { return }
         mergeNewTransactions([transaction])
+        updateWallet()
     }
 }
