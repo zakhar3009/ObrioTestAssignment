@@ -146,6 +146,24 @@ extension WalletController {
         return dataSource
     }
 }
+
+extension WalletController: TransactionsViewDelegate {
+    func updateTransactions() {
+        var snaphot = NSDiffableDataSourceSnapshot<Section, Content>()
+        snaphot.appendSections([.wallet])
+        snaphot.appendItems([.balance], toSection: .wallet)
+        if !vm.transactions.isEmpty {
+            vm.transactions.forEach { (date, transactions) in
+                let section = Section.transactionsGroup(date)
+                let items = transactions.map { Content.transaction($0) }
+                snaphot.appendSections([section])
+                snaphot.appendItems(items, toSection: section)
+            }
+        }
+        dataSource.apply(snaphot, animatingDifferences: true)
+    }
+}
+
 extension WalletController: BalanceCellDelegate {
     func presentAlert(_ alert: UIAlertController) {
         self.present(alert, animated: true)
