@@ -7,8 +7,13 @@
 
 import Foundation
 
+protocol TransactionsOberver: AnyObject {
+    func addedTransaction(_ transaction: TransactionModel)
+}
+
 class TransactionsDataService {
     private let dataService: DataService
+    private var observers = [TransactionsOberver]()
     
     init(dataService: DataService) {
         self.dataService = dataService
@@ -29,8 +34,32 @@ class TransactionsDataService {
         return []
     }
     
-    func create(_ transaction: TransactionModel) {
-        let _ = Transaction(context: dataService.context, model: transaction)
-        dataService.saveChanges()
+    func add(_ transaction: TransactionModel) {
+        let predicate = NSPredicate(format: "walletId == %@", transaction.walletId.uuidString)
+        do {
+            guard let wallet: Wallet = try dataService.fetchAll(predicate: predicate).first else {
+                return
+            }
+            let model = Transaction(context: dataService.context, model: transaction)
+            model.wallet = wallet
+            dataService.saveChanges()
+            if let transaction = TransactionModel(from: model) {
+                notifyObservers(about: transaction)
+            }
+        } catch {
+            print("Error finding wallet for transaction: \(error.localizedDescription)")
+        }
+    }
+    
+    func notifyObservers(about transaction: TransactionModel) {
+        observers.forEach { $0.addedTransaction(transaction) }
+    }
+    
+    func addObserver(_ observer: TransactionsOberver) {
+        observers.append(observer)
+    }
+    
+    func removeObserver(_ observer: TransactionsOberver) {
+        observers.removeAll { $0 === observer }
     }
 }
