@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WalletModel {
+struct WalletModel: Hashable {
     let walletId: UUID
     let balance: Decimal
     let transactions: [TransactionModel]

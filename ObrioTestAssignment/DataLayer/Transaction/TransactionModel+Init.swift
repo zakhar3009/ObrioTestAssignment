@@ -11,8 +11,7 @@ extension TransactionModel {
     init?(from transaction: Transaction) {
         guard let date = transaction.date,
               let amount = transaction.amount,
-              let wallet = transaction.wallet,
-              let walletModel = WalletModel(from: wallet),
+              let walletId = transaction.wallet?.walletId,
               let type = transaction.type,
               let transactionType = TransactionType(rawValue: type)
         else {
@@ -20,7 +19,7 @@ extension TransactionModel {
         }
         self.date = date
         self.amount = amount.decimalValue
-        self.wallet = walletModel
+        self.walletId = walletId
         self.type = transactionType
         if let categoryName = transaction.category,
            let category = TransactionCategories(rawValue: categoryName) {

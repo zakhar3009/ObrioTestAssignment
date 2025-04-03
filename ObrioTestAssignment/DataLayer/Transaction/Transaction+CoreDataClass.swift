@@ -17,6 +17,5 @@ public class Transaction: NSManagedObject {
         self.type = model.type.rawValue
         self.category = model.category?.rawValue
         self.amount = NSDecimalNumber(decimal: model.amount)
-        self.wallet = Wallet(context: context, model: model.wallet)
     }
 }

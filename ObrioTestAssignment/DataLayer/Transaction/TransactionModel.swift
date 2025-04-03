@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct TransactionModel {
+struct TransactionModel: Hashable {
     let date: Date
     let amount: Decimal
     let category: TransactionCategories?
-    let wallet: WalletModel
+    let walletId: UUID
     let type: TransactionType
 }
