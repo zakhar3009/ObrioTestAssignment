@@ -121,4 +121,13 @@ extension TransactionCreationViewController: TransactionCreationVMDelegate {
             self.createButton.backgroundColor = enabled ? .systemBlue : .systemGray5
         }
     }
+    
+    func notEnoughFunds() {
+        let alert = UIAlertController(title: "Not enough funds",
+                                      message: "Please add funds to your wallet to complete this transaction.",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true)
+    }
 }

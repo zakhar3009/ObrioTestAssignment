@@ -9,6 +9,7 @@ import Foundation
 
 protocol TransactionCreationVMDelegate: AnyObject {
     func updateEnabledCreation(_ enabled: Bool)
+    func notEnoughFunds()
 }
 
 class TransactionCreationVM {
@@ -41,13 +42,17 @@ class TransactionCreationVM {
     
     func createTransaction() {
         guard let amount = Decimal(string: amountInput), let category = selectedCategory else { return }
-        let transaction = TransactionModel(
-            date: Date(),
-            amount: amount,
-            category: category,
-            walletId: wallet.walletId,
-            type: .expense)
-        transactionService.add(transaction)
+        if wallet.balance < amount {
+            delegate?.notEnoughFunds()
+        } else {
+            let transaction = TransactionModel(
+                date: Date(),
+                amount: amount,
+                category: category,
+                walletId: wallet.walletId,
+                type: .expense)
+            transactionService.add(transaction)
+        }
     }
 }
 
