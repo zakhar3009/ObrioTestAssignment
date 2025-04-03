@@ -22,7 +22,7 @@ class TransactionsDataService {
     func fetchTransactionsBatch(for wallet: WalletModel, offset: Int, limit: Int) -> [TransactionModel] {
         do {
             let predicate = NSPredicate(format: "wallet.walletId == %@", wallet.walletId.uuidString)
-            let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+            let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
             let transactions: [Transaction] = try dataService.fetchBatch(offset: offset,
                                                                          limit: limit,
                                                                          predicate: predicate,
