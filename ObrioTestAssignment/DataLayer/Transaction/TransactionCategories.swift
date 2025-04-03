@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum TransactionCategories: String {
-    case groceries
-    case taxi
-    case electronics
-    case restaurant
-    case other
+enum TransactionCategories: String, Hashable {
+    case groceries = "Groceries"
+    case taxi = "Taxi"
+    case electronics = "Electronics"
+    case restaurant = "Restaurant"
+    case other = "Other"
 }
