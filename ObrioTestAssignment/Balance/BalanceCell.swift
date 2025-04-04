@@ -16,12 +16,51 @@ class BalanceCell: UICollectionViewCell {
     static let reuseIdentifier = "BalanceCell"
     private var vm: BalanceVM? = nil
     weak var delegate: BalanceCellDelegate?
-    private let balanceTitle = UILabel()
-    private let scrollView = UIScrollView()
-    private let rateLabel = UILabel()
-    private let balanceValue = UILabel()
-    private let depositButton = UIButton(type: .system)
-    private let addTransactionButton = UIButton()
+    private lazy var balanceTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Balance"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .black
+        return label
+    }()
+    private lazy var rateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "1 BTC = ???"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .gray
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    private lazy var balanceValue: UILabel = {
+        let label = UILabel()
+        label.text = "-"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.textColor = .black
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        return label
+    }()
+    private lazy var depositButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("+", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 28)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(showDepositPopup), for: .touchUpInside)
+        return button
+    }()
+    private lazy var addTransactionButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Add Transaction", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 12
+        button.addTarget(self, action: #selector(addTransactionTapped), for: .touchUpInside)
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,55 +79,10 @@ class BalanceCell: UICollectionViewCell {
     }
     
     private func setupUi() {
-        setupRateLabel()
-        setupBalanceTitle()
-        setupBalanceValue()
-        setupDepositButton()
-        setupAddTransactionButton()
-    }
-    
-    private func setupRateLabel() {
-        rateLabel.text = "1 BTC = ???"
-        rateLabel.translatesAutoresizingMaskIntoConstraints = false
-        rateLabel.font = UIFont.systemFont(ofSize: 16)
-        rateLabel.textColor = .gray
-        rateLabel.adjustsFontSizeToFitWidth = true
         self.contentView.addSubview(rateLabel)
-    }
-    
-    private func setupBalanceTitle() {
-        balanceTitle.text = "Balance"
-        balanceTitle.translatesAutoresizingMaskIntoConstraints = false
-        balanceTitle.font = UIFont.boldSystemFont(ofSize: 20)
-        balanceTitle.textColor = .black
         self.contentView.addSubview(balanceTitle)
-    }
-    
-    private func setupBalanceValue() {
-        balanceValue.text = "-"
-        balanceValue.translatesAutoresizingMaskIntoConstraints = false
-        balanceValue.font = UIFont.boldSystemFont(ofSize: 28)
-        balanceValue.textColor = .black
-        balanceValue.adjustsFontSizeToFitWidth = true
-        balanceValue.minimumScaleFactor = 0.5
         self.contentView.addSubview(balanceValue)
-    }
-    
-    private func setupDepositButton() {
-        depositButton.setTitle("+", for: .normal)
-        depositButton.titleLabel?.font = UIFont.systemFont(ofSize: 28)
-        depositButton.translatesAutoresizingMaskIntoConstraints = false
-        depositButton.addTarget(self, action: #selector(showDepositPopup), for: .touchUpInside)
         self.contentView.addSubview(depositButton)
-    }
-    
-    private func setupAddTransactionButton() {
-        addTransactionButton.setTitle("Add Transaction", for: .normal)
-        addTransactionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        addTransactionButton.translatesAutoresizingMaskIntoConstraints = false
-        addTransactionButton.backgroundColor = .systemBlue
-        addTransactionButton.layer.cornerRadius = 12
-        addTransactionButton.addTarget(self, action: #selector(addTransactionTapped), for: .touchUpInside)
         self.contentView.addSubview(addTransactionButton)
     }
     

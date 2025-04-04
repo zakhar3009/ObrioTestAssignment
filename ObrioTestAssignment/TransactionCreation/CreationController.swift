@@ -9,10 +9,41 @@ import UIKit
 class TransactionCreationViewController: UIViewController {
     weak var coordinator: WalletCoordinator?
     private var vm: TransactionCreationVM!
-    private var selectionView: CategorySelectionView!
-    private var amountTextField: UITextField!
-    private var createButton: UIButton!
-    private var inputTitle: UILabel!
+    private lazy var selectionView: CategorySelectionView = {
+        let selection = CategorySelectionView()
+        selection.translatesAutoresizingMaskIntoConstraints = false
+        selection.configure(with: vm.selectionVM)
+        return selection
+    }()
+    private lazy var amountTextField: UITextField = {
+        let input = UITextField()
+        input.translatesAutoresizingMaskIntoConstraints = false
+        input.placeholder = "Enter amount"
+        input.borderStyle = .roundedRect
+        input.keyboardType = .decimalPad
+        input.delegate = self
+        return input
+    }()
+    private lazy var createButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Create", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+        button.backgroundColor = .systemGray5
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 10
+        button.isEnabled = false
+        return button
+    }()
+    private lazy var inputTitle: UILabel = {
+        let title = UILabel()
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.textAlignment = .left
+        title.text = "Amount"
+        title.font = .systemFont(ofSize: 18, weight: .bold)
+        return title
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,48 +59,9 @@ class TransactionCreationViewController: UIViewController {
     
     private func setupUI() {
         title = "Add transaction"
-        setupInputTitle()
-        setupAmountInput()
-        setupSelectionView()
-        setupCreateButton()
-    }
-    
-    private func setupInputTitle() {
-        inputTitle = UILabel()
-        inputTitle.translatesAutoresizingMaskIntoConstraints = false
-        inputTitle.textAlignment = .left
-        inputTitle.text = "Amount"
-        inputTitle.font = .systemFont(ofSize: 18, weight: .bold)
         view.addSubview(inputTitle)
-    }
-    
-    private func setupAmountInput() {
-        amountTextField = UITextField()
-        amountTextField.translatesAutoresizingMaskIntoConstraints = false
-        amountTextField.placeholder = "Enter amount"
-        amountTextField.borderStyle = .roundedRect
-        amountTextField.keyboardType = .decimalPad
-        amountTextField.delegate = self
         view.addSubview(amountTextField)
-    }
-    
-    private func setupSelectionView() {
-        selectionView = CategorySelectionView()
-        selectionView.translatesAutoresizingMaskIntoConstraints = false
-        selectionView.configure(with: vm.selectionVM)
         view.addSubview(selectionView)
-    }
-    
-    private func setupCreateButton() {
-        createButton = UIButton(type: .system)
-        createButton.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
-        createButton.translatesAutoresizingMaskIntoConstraints = false
-        createButton.setTitle("Create", for: .normal)
-        createButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-        createButton.backgroundColor = .systemGray5
-        createButton.setTitleColor(.white, for: .normal)
-        createButton.layer.cornerRadius = 10
-        createButton.isEnabled = false
         view.addSubview(createButton)
     }
     

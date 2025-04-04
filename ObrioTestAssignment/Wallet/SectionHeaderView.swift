@@ -8,12 +8,19 @@
 import UIKit
 
 class SectionHeaderView: UICollectionReusableView {
-    let label = UILabel()
     static let reuseIdentifier = "title-supplementary-reuse-identifier"
+    private lazy var label: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        addSubview(label)
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -24,11 +31,7 @@ class SectionHeaderView: UICollectionReusableView {
         label.text = text
     }
     
-    func setupUI() {
-        label.font = .systemFont(ofSize: 20, weight: .bold) 
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
-        addSubview(label)
+    func setupLayout() {
         let inset = CGFloat(10)
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),

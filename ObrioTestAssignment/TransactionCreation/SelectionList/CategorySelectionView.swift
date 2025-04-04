@@ -9,8 +9,14 @@ import UIKit
 
 class CategorySelectionView: UIView {
     private var vm: CategorySelectionVM!
-    private var stackView: UIStackView!
     private var categoryViews: [CategorySelectionItemView] = []
+    private lazy var stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 10
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
     
     func configure(with vm: CategorySelectionVM) {
         self.vm = vm
@@ -19,20 +25,12 @@ class CategorySelectionView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        self.addSubview(stackView)
         setupLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupUI() {
-        stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(stackView)
     }
     
     private func setupLayout() {

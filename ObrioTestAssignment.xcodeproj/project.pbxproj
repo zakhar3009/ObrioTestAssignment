@@ -48,6 +48,7 @@
 		7EC639762D9F129F00B2F172 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639752D9F129F00B2F172 /* Coordinator.swift */; };
 		7EC639782D9F142300B2F172 /* WalletCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC639772D9F142300B2F172 /* WalletCoordinator.swift */; };
 		7ED5FB092D9D70B5005CBB2F /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5FB082D9D70B5005CBB2F /* TransactionType.swift */; };
+		7EE9268C2D9FEB440065DB77 /* Date+StartOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE9268B2D9FEB440065DB77 /* Date+StartOfDay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		7EC639752D9F129F00B2F172 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		7EC639772D9F142300B2F172 /* WalletCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCoordinator.swift; sourceTree = "<group>"; };
 		7ED5FB082D9D70B5005CBB2F /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		7EE9268B2D9FEB440065DB77 /* Date+StartOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StartOfDay.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				7EC639572D9EB1CF00B2F172 /* Date+Format.swift */,
+				7EE9268B2D9FEB440065DB77 /* Date+StartOfDay.swift */,
 				7EC639582D9EB1CF00B2F172 /* NumberFormatter+CurrencyFormatting.swift */,
 			);
 			path = Extensions;
@@ -391,6 +394,7 @@
 				7E3956672D9C5A7B005C2807 /* Transaction+CoreDataClass.swift in Sources */,
 				7E3956692D9C5A7B005C2807 /* Wallet+CoreDataClass.swift in Sources */,
 				7E3956522D9C5266005C2807 /* TransactionCategories.swift in Sources */,
+				7EE9268C2D9FEB440065DB77 /* Date+StartOfDay.swift in Sources */,
 				7EC639712D9EFEB800B2F172 /* CategorySelectionView.swift in Sources */,
 				7E39568C2D9C7FC4005C2807 /* RateRequestModels.swift in Sources */,
 				7EC639692D9EF33300B2F172 /* CategorySelectionItemView.swift in Sources */,

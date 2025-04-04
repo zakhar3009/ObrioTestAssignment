@@ -8,11 +8,23 @@
 import UIKit
 
 class WalletViewController: UIViewController {
+    static let sectionHeaderKind = "sectionHeaderKind"
     weak var coordinator: WalletCoordinator?
     private var vm: WalletVM!
-    private var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Content>!
-    static let sectionHeaderKind = "sectionHeaderKind"
+    private lazy var collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: createCompositionLayout())
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.register(BalanceCell.self, forCellWithReuseIdentifier: BalanceCell.reuseIdentifier)
+        view.register(TransactionCell.self, forCellWithReuseIdentifier: TransactionCell.reuseIdentifier)
+        view.register(SectionHeaderView.self,
+                                forSupplementaryViewOfKind: Self.sectionHeaderKind,
+                                withReuseIdentifier: SectionHeaderView.reuseIdentifier)
+        view.delegate = self
+        return view
+    }()
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Content> = {
+        makeDateSource()
+    }()
     
     enum Section: Hashable {
         case wallet
@@ -24,28 +36,25 @@ class WalletViewController: UIViewController {
         case transaction(TransactionModel)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .white
-    }
-    
     func configure(with vm: WalletVM) {
         self.vm = vm
-        setupCollectionView()
         vm.delegate = self
     }
     
-    func setupCollectionView() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionLayout())
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.register(BalanceCell.self, forCellWithReuseIdentifier: BalanceCell.reuseIdentifier)
-        collectionView.register(TransactionCell.self, forCellWithReuseIdentifier: TransactionCell.reuseIdentifier)
-        collectionView.register(SectionHeaderView.self,
-                                forSupplementaryViewOfKind: Self.sectionHeaderKind,
-                                withReuseIdentifier: SectionHeaderView.reuseIdentifier)
-        collectionView.delegate = self
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
         self.view.addSubview(collectionView)
-        self.dataSource = makeDateSource()
+        setupLayout()
+    }
+    
+    private func setupLayout() {
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
     }
 }
 
@@ -102,8 +111,7 @@ extension WalletViewController {
     }
     
     private func createTransactionsCellRegistration() -> UICollectionView.CellRegistration<TransactionCell, TransactionModel> {
-        UICollectionView.CellRegistration<TransactionCell, TransactionModel> { [weak self] (cell, indexPath, transaction) in
-            guard let self else { return }
+        UICollectionView.CellRegistration<TransactionCell, TransactionModel> { (cell, indexPath, transaction) in
             cell.configure(vm: TransactionCellVM(transaction: transaction))
         }
     }
@@ -145,8 +153,6 @@ extension WalletViewController {
 
 extension WalletViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//         -1 because transactions starts from second section
-//         should be changed
         guard indexPath.section > 0 else { return }
         let allLoadedCellsCount = self.vm.transactions.prefix(indexPath.section - 1)
             .flatMap(\.transactions)

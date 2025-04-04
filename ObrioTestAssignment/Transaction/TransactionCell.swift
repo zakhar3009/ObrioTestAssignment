@@ -9,13 +9,33 @@ import UIKit
 
 final class TransactionCell: UICollectionViewCell {
     static let reuseIdentifier = "TransactionCell"
-    private let dateLabel = UILabel()
-    private let categoryLabel = UILabel()
-    private let amountLabel = UILabel()
+    private lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.textColor = .gray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(.required, for: .vertical)
+        return label
+    }()
+    private let categoryLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(.required, for: .vertical)
+        return label
+    }()
+    private let amountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(.required, for: .vertical)
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -30,35 +50,13 @@ final class TransactionCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        setupDateLabel()
-        setupCategoryLabel()
-        setupAmountLabel()
-        setupConstraints()
-    }
-    
-    private func setupDateLabel() {
-        dateLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        dateLabel.textColor = .gray
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.setContentHuggingPriority(.required, for: .vertical)
         self.contentView.addSubview(dateLabel)
-    }
-    
-    private func setupCategoryLabel() {
-        categoryLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
-        amountLabel.setContentHuggingPriority(.required, for: .vertical)
         self.contentView.addSubview(categoryLabel)
-    }
-    
-    private func setupAmountLabel() {
-        amountLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        amountLabel.translatesAutoresizingMaskIntoConstraints = false
-        amountLabel.setContentHuggingPriority(.required, for: .vertical)
         self.contentView.addSubview(amountLabel)
     }
     
-    private func setupConstraints() {
+    
+    private func setupLayout() {
         dateLabel.sizeToFit()
         NSLayoutConstraint.activate([
             dateLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12),
