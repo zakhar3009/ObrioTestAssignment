@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+extension Date {
+    func startOfDay() -> Date {
+        let calendar = Calendar.current
+        return calendar.startOfDay(for: self) 
+    }
+}
