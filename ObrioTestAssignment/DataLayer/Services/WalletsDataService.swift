@@ -7,8 +7,13 @@
 
 import Foundation
 
+protocol WalletsObserver: AnyObject {
+    func updatedBalance(for wallet: WalletModel)
+}
+
 class WalletsDataService {
     private let dataService: DataService
+    private var observers = [WalletsObserver]()
     
     init(dataService: DataService) {
         self.dataService = dataService
@@ -20,6 +25,9 @@ class WalletsDataService {
             if let wallet: Wallet = try dataService.fetchAll(predicate: predicate).first {
                 wallet.balance = NSDecimalNumber(decimal: (wallet.balance?.decimalValue ?? 0) + value)
                 dataService.saveChanges()
+                if let model = WalletModel(from: wallet) {
+                    notifyObservers(about: model)
+                }
             } else {
                 fatalError("Wallet not found")
             }
@@ -55,5 +63,17 @@ class WalletsDataService {
         newWallet.balance = 0
         dataService.saveChanges()
         return WalletModel(from: newWallet)
+    }
+    
+    private func notifyObservers(about wallet: WalletModel) {
+        observers.forEach { $0.updatedBalance(for: wallet) }
+    }
+    
+    func addObserver(_ observer: WalletsObserver) {
+        observers.append(observer)
+    }
+    
+    func removeObserver(_ observer: WalletsObserver) {
+        observers.removeAll { $0 === observer }
     }
 }

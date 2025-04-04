@@ -128,7 +128,7 @@ class BalanceCell: UICollectionViewCell {
         let alert = UIAlertController(title: "Enter amount for deposit", message: "", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Amount"
-            textField.keyboardType = .numberPad
+            textField.keyboardType = .numbersAndPunctuation
         }
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak alert, weak self] _ in
             if let input = alert?.textFields?.first?.text,

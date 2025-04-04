@@ -40,6 +40,7 @@ class WalletVM {
     /// Sets up observer and loads initial wallet and transactions.
     private func setup() {
         transactionsService.addObserver(self)
+        walletService.addObserver(self)
         updateWallet()
         fetchNewTransactions()
     }
@@ -100,6 +101,7 @@ class WalletVM {
     /// Removes observer on deinitialization.
     deinit {
         transactionsService.removeObserver(self)
+        walletService.removeObserver(self)
     }
 }
 
@@ -108,6 +110,12 @@ extension WalletVM: TransactionsOberver {
     func addedTransaction(_ transaction: TransactionModel) {
         guard mainWallet.walletId == transaction.walletId else { return }
         addNewTransaction(transaction)
+    }
+}
+
+extension WalletVM: WalletsObserver {
+    func updatedBalance(for wallet: WalletModel) {
+        guard mainWallet.walletId == wallet.walletId else { return }
         updateWallet()
     }
 }

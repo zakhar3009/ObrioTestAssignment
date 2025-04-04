@@ -20,7 +20,7 @@ class TransactionCreationViewController: UIViewController {
         input.translatesAutoresizingMaskIntoConstraints = false
         input.placeholder = "Enter amount"
         input.borderStyle = .roundedRect
-        input.keyboardType = .decimalPad
+        input.keyboardType = .numbersAndPunctuation
         input.delegate = self
         return input
     }()
@@ -102,6 +102,11 @@ class TransactionCreationViewController: UIViewController {
 extension TransactionCreationViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         vm.setNewInput(textField.text ?? "")
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
