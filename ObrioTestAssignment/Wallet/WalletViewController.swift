@@ -43,6 +43,7 @@ class WalletViewController: UIViewController {
         collectionView.register(SectionHeaderView.self,
                                 forSupplementaryViewOfKind: Self.sectionHeaderKind,
                                 withReuseIdentifier: SectionHeaderView.reuseIdentifier)
+        collectionView.delegate = self
         self.view.addSubview(collectionView)
         self.dataSource = makeDateSource()
     }
@@ -101,8 +102,9 @@ extension WalletViewController {
     }
     
     private func createTransactionsCellRegistration() -> UICollectionView.CellRegistration<TransactionCell, TransactionModel> {
-        UICollectionView.CellRegistration<TransactionCell, TransactionModel> { (cell, _, transaction) in
-            cellWalletViewControllerransactionCellVM(transaction: transaction))
+        UICollectionView.CellRegistration<TransactionCell, TransactionModel> { [weak self] (cell, indexPath, transaction) in
+            guard let self else { return }
+            cell.configure(vm: TransactionCellVM(transaction: transaction))
         }
     }
     
@@ -138,6 +140,21 @@ extension WalletViewController {
             collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
         }
         return dataSource
+    }
+}
+
+extension WalletViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//         -1 because transactions starts from second section
+//         should be changed
+        guard indexPath.section > 0 else { return }
+        let allLoadedCellsCount = self.vm.transactions.prefix(indexPath.section - 1)
+            .flatMap(\.transactions)
+            .count + indexPath.row + 1
+        if allLoadedCellsCount == vm.allTransactionsCount {
+            print("Fetch new batch")
+            vm.fetchNewTransactions()
+        }
     }
 }
 
