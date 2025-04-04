@@ -70,7 +70,7 @@ class BalanceVM {
     
     /// Updates the balance view.
     func updateBalanceView() {
-        delegate?.updateBalanceLabel(wallet.balance.description)
+        delegate?.updateBalanceLabel(wallet.balance.description + "₿")
     }
     
     /// Fetches the latest Bitcoin rate.
