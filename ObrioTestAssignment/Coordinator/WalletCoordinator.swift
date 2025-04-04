@@ -15,13 +15,13 @@ class WalletCoordinator: Coordinator {
     private lazy var networkService: NetworkingService = {
         NetworkingService(decoderService: decoderService)
     }()
-    private lazy var walletService: WalletsDataService = {
+    private lazy var walletService: WalletsService = {
         WalletsDataService(dataService: dataService)
     }()
-    private lazy var transactionsService: TransactionsDataService = {
+    private lazy var transactionsService: TransactionsService = {
         TransactionsDataService(dataService: dataService)
     }()
-    private lazy var rateService: BitcoinRateService = {
+    private lazy var rateService: RateService = {
         BitcoinRateService(networkService: networkService, dataService: dataService)
     }()
     

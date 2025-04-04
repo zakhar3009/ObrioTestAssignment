@@ -15,9 +15,9 @@ protocol TransactionsViewDelegate: AnyObject {
 
 class WalletVM {
     private let transactionsBatchSize = 20
-    let transactionsService: TransactionsDataService
-    let walletService: WalletsDataService
-    let rateService: BitcoinRateService
+    let transactionsService: TransactionsService
+    let walletService: WalletsService
+    let rateService: RateService
     var mainWallet: WalletModel!
     var transactions: [GroupOfTransactions] = []
     weak var delegate: TransactionsViewDelegate? {
@@ -30,7 +30,7 @@ class WalletVM {
     }
     
     /// Initializes the view model with required services.
-    init(walletService: WalletsDataService, rateService: BitcoinRateService, transactionsService: TransactionsDataService) {
+    init(walletService: WalletsService, rateService: RateService, transactionsService: TransactionsService) {
         self.walletService = walletService
         self.rateService = rateService
         self.transactionsService = transactionsService
@@ -49,7 +49,7 @@ class WalletVM {
     private func updateWallet() {
         if let wallet = walletService.getWallets().first {
             self.mainWallet = wallet
-        } else if let newWallet = walletService.createMainWallet() {
+        } else if let newWallet = walletService.createWallet() {
             self.mainWallet = newWallet
         }
     }

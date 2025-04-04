@@ -11,7 +11,14 @@ protocol TransactionsOberver: AnyObject {
     func addedTransaction(_ transaction: TransactionModel)
 }
 
-class TransactionsDataService {
+protocol TransactionsService {
+    func fetchTransactionsBatch(for wallet: WalletModel, offset: Int, limit: Int) -> [TransactionModel]
+    func add(_ transaction: TransactionModel)
+    func addObserver(_ observer: TransactionsOberver)
+    func removeObserver(_ observer: TransactionsOberver)
+}
+
+class TransactionsDataService: TransactionsService {
     private let dataService: DataService
     private var observers = [TransactionsOberver]()
     

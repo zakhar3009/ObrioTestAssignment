@@ -13,9 +13,9 @@ protocol BalanceVMDelegate: AnyObject {
 }
 
 class BalanceVM {
-    private let walletsService: WalletsDataService
-    private let rateService: BitcoinRateService
-    private let transactionsService: TransactionsDataService
+    private let walletsService: WalletsService
+    private let rateService: RateService
+    private let transactionsService: TransactionsService
     
     weak var delegate: BalanceVMDelegate? {
         didSet {
@@ -42,9 +42,9 @@ class BalanceVM {
     
     /// Initializes view model with dependencies and sets up.
     init(wallet: WalletModel,
-         walletsService: WalletsDataService,
-         rateService: BitcoinRateService,
-         transactionsService: TransactionsDataService
+         walletsService: WalletsService,
+         rateService: RateService,
+         transactionsService: TransactionsService
     ) {
         self.wallet = wallet
         self.walletsService = walletsService

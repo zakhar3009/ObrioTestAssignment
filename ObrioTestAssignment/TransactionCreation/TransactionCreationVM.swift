@@ -16,13 +16,13 @@ class TransactionCreationVM {
     private let wallet: WalletModel
     private var amountInput = ""
     private var selectedCategory: TransactionCategories?
-    private let transactionService: TransactionsDataService
+    private let transactionService: TransactionsService
     private var enabledCreation = false
     let selectionVM = CategorySelectionVM()
     weak var delegate: TransactionCreationVMDelegate?
     
     /// Initializes the view model with services and wallet.
-    init(transactionService: TransactionsDataService, wallet: WalletModel) {
+    init(transactionService: TransactionsService, wallet: WalletModel) {
         self.transactionService = transactionService
         self.wallet = wallet
         selectionVM.selectionDelegate = self

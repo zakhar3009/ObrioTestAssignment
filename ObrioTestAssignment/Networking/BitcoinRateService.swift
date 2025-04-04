@@ -7,7 +7,11 @@
 
 import Foundation
 
-class BitcoinRateService {
+protocol RateService {
+    func fetchRate() async -> CurrencyRateModel?
+}
+
+class BitcoinRateService: RateService {
     private let networkService: NetworkingService
     private let dataService: DataService
     private let bitcoinRateUrl = URL(string: "https://api.coincap.io/v2/assets/bitcoin")!

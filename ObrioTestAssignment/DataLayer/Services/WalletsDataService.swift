@@ -11,7 +11,16 @@ protocol WalletsObserver: AnyObject {
     func updatedBalance(for wallet: WalletModel)
 }
 
-class WalletsDataService {
+protocol WalletsService {
+    func updateBalance(with value: Decimal, for wallet: WalletModel)
+    func getWallets() -> [WalletModel]
+    func getWallet(by id: UUID) -> WalletModel?
+    func createWallet() -> WalletModel?
+    func addObserver(_ observer: WalletsObserver)
+    func removeObserver(_ observer: WalletsObserver)
+}
+
+class WalletsDataService: WalletsService {
     private let dataService: DataService
     private var observers = [WalletsObserver]()
     
@@ -57,7 +66,7 @@ class WalletsDataService {
         return nil
     }
     
-    func createMainWallet() -> WalletModel? {
+    func createWallet() -> WalletModel? {
         let newWallet = Wallet(context: dataService.context)
         newWallet.walletId = UUID()
         newWallet.balance = 0
