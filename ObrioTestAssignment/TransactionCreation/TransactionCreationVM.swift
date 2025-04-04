@@ -21,17 +21,20 @@ class TransactionCreationVM {
     let selectionVM = CategorySelectionVM()
     weak var delegate: TransactionCreationVMDelegate?
     
+    /// Initializes the view model with services and wallet.
     init(transactionService: TransactionsDataService, wallet: WalletModel) {
         self.transactionService = transactionService
         self.wallet = wallet
         selectionVM.selectionDelegate = self
     }
     
+    /// Sets new input for the amount field.
     func setNewInput(_ input: String) {
         amountInput = input
         updateEnabledCreation()
     }
     
+    /// Enables or disables transaction creation based on input and category.
     private func updateEnabledCreation() {
         if let amount = Decimal(string: amountInput), amount > 0, selectedCategory != nil {
             delegate?.updateEnabledCreation(true)
@@ -40,6 +43,7 @@ class TransactionCreationVM {
         }
     }
     
+    /// Creates a transaction if validation passes.
     func createTransaction() {
         guard let amount = Decimal(string: amountInput), let category = selectedCategory else { return }
         if wallet.balance < amount {
@@ -57,6 +61,7 @@ class TransactionCreationVM {
 }
 
 extension TransactionCreationVM: CategorySelectionUpdateDelegate {
+    /// Updates selected category and creation state.
     func categoryUpdated() {
         selectedCategory = selectionVM.selectedCategory
         updateEnabledCreation()

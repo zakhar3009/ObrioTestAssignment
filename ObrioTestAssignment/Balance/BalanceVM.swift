@@ -34,11 +34,13 @@ class BalanceVM {
         }
     }
     
+    /// Updates both rate and balance views.
     func updateView() {
         updateViewRate()
         updateBalanceView()
     }
     
+    /// Initializes view model with dependencies and sets up.
     init(wallet: WalletModel,
          walletsService: WalletsDataService,
          rateService: BitcoinRateService,
@@ -51,12 +53,14 @@ class BalanceVM {
         setup()
     }
     
+    /// Sets up observers and initial data.
     func setup() {
         transactionsService.addObserver(self)
         updateRate()
         updateWallet()
     }
     
+    /// Updates the exchange rate view.
     func updateViewRate() {
         guard let bitcoinRate else { return }
         if let formattedRate = NumberFormatter.formattedCurrency(value: bitcoinRate) {
@@ -64,10 +68,12 @@ class BalanceVM {
         }
     }
     
+    /// Updates the balance view.
     func updateBalanceView() {
         delegate?.updateBalanceLabel(wallet.balance.description)
     }
     
+    /// Fetches the latest Bitcoin rate.
     func updateRate() {
         Task {
             guard let currencyRate = await rateService.fetchRate() else {
@@ -79,6 +85,7 @@ class BalanceVM {
         }
     }
     
+    /// Adds a deposit transaction.
     func addDeposit(_ value: Decimal) {
         let deposit = TransactionModel(date: Date(),
                                        amount: value,
@@ -88,11 +95,13 @@ class BalanceVM {
         transactionsService.add(deposit)
     }
     
+    /// Updates the wallet balance with a value.
     private func updateBalance(with value: Decimal) {
         walletsService.updateBalance(with: value, for: wallet)
         updateWallet()
     }
     
+    /// Updates the wallet from the service.
     func updateWallet() {
         if let wallet = walletsService.getWallet(by: wallet.walletId)  {
             self.wallet = wallet
@@ -101,6 +110,7 @@ class BalanceVM {
         }
     }
     
+    /// Validates and converts deposit string to Decimal.
     func validatedDeposit(from value: String) -> Decimal? {
         guard let amount = Decimal(string: value), amount > 0 else {
             return nil
@@ -108,12 +118,14 @@ class BalanceVM {
         return amount
     }
     
+    /// Removes observer on deinit.
     deinit {
         transactionsService.removeObserver(self)
     }
 }
 
 extension BalanceVM: TransactionsOberver {
+    /// Updates balance when a transaction is added.
     func addedTransaction(_ transaction: TransactionModel) {
         guard wallet.walletId == transaction.walletId else { return }
         switch transaction.type {

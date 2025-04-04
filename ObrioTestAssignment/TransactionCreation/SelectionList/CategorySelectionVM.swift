@@ -25,12 +25,14 @@ class CategorySelectionVM {
         }
     }
     
+    /// Selects a category and updates the view and selection delegates.
     func select(category: TransactionCategories) {
         selectedCategory = category
         viewDelegate?.updateSelectionItems()
         selectionDelegate?.categoryUpdated()
     }
     
+    /// Deselects the current category and updates the view and selection delegates.
     func deselect() {
         selectedCategory = nil
         viewDelegate?.updateSelectionItems()
