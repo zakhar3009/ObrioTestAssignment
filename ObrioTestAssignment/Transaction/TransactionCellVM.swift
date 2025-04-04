@@ -23,10 +23,6 @@ class TransactionCellVM {
     }
     
     var amount: String {
-        if let formattedAmount = NumberFormatter.formattedCurrency(value: transaction.amount) {
-            return formattedAmount + "₿"
-        } else {
-            return ""
-        }
+        transaction.amount.description + "₿"
     }
 }
