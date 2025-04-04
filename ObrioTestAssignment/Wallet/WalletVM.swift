@@ -57,34 +57,37 @@ class WalletVM {
             limit: transactionsBatchSize
         )
         if !newTransactions.isEmpty {
-            mergeNewTransactions(newTransactions)
+            mergeNewBatch(newTransactions)
         }
     }
     
-    private func mergeNewTransactions(_ newTransactions: [TransactionModel]) {
-        let groupedTransactions = groupTransactions(newTransactions)
+    private func mergeNewBatch(_ newTransactions: [TransactionModel]) {
+        let groupedTransactions = Dictionary(grouping: newTransactions,
+                                             by: { $0.date.startOfDay() })
         var mergedTransactions = Dictionary(uniqueKeysWithValues: transactions)
-        mergedTransactions.merge(groupedTransactions) { current, new in
-            (current + new).sorted(by: { $0.date > $1.date})
-        }
-        self.transactions = mergedTransactions.sorted(by: { $0.key > $1.key }).map { ($0.key, $0.value) }
-        notifyDelegate()
-    }
-    
-    private func notifyDelegate() {
+        mergedTransactions.merge(groupedTransactions) { $0 + $1 }
+        self.transactions = mergedTransactions
+            .sorted(by: { $0.key > $1.key })
+            .map { ($0.key, $0.value) }
         delegate?.updateTransactions()
     }
     
-    private func groupTransactions(_ transactions: [TransactionModel]) -> [Date: [TransactionModel]] {
-        let calendar = Calendar.current
-        return Dictionary(grouping: transactions, by: { calendar.startOfDay(for: $0.date) })
+    private func addNewTransaction(_ transaction: TransactionModel) {
+        if transactions.first?.date == transaction.date.startOfDay() {
+            transactions[0].transactions.insert(transaction, at: 0)
+        } else {
+            let newGroup = GroupOfTransactions(transaction.date.startOfDay(), [transaction])
+            transactions.insert(newGroup, at: 0)
+        }
+        delegate?.updateTransactions()
     }
     
     func transactions(for date: Date) -> [TransactionModel] {
-        guard let transactions = transactions.first(where: { $0.date == date })?.transactions else {
+        if let transactions = transactions.first(where: { $0.date == date })?.transactions {
+            return transactions
+        } else {
             return []
         }
-        return transactions
     }
     
     deinit {
@@ -95,7 +98,7 @@ class WalletVM {
 extension WalletVM: TransactionsOberver {
     func addedTransaction(_ transaction: TransactionModel) {
         guard mainWallet.walletId == transaction.walletId else { return }
-        mergeNewTransactions([transaction])
+        addNewTransaction(transaction)
         updateWallet()
     }
 }
